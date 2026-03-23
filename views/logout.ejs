@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aion - Logout</title>
+
+  <!-- Tab icon (favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/xxxxxxxxx.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/xxxxxxxxx.png">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Background with video */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #fff;
+            min-height: 100vh;
+            margin: 0;
+            position: relative;
+            background-color: #0d0d1a;
+            overflow-x: hidden;
+        }
+
+        #bgVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(0,0,0,0.85), rgba(120,40,150,0.3), rgba(0,0,0,0.85));
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            z-index: 1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Container */
+        .logout-box {
+            position: relative;
+            z-index: 2;
+            background: rgba(20, 20, 40, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 14px;
+            width: 400px;
+            margin: 150px auto;
+            text-align: center;
+            border: 1px solid rgba(120, 60, 150, 0.6);
+            box-shadow: 0 0 25px rgba(120, 40, 150, 0.7);
+            animation: fadeIn 1.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Title */
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff5c5c;
+            text-shadow: 0 0 10px rgba(255, 100, 120, 0.7), 0 0 20px rgba(120,40,150,0.7);
+            margin-bottom: 20px;
+        }
+
+        /* Text */
+        p {
+            font-size: 16px;
+            color: #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* Button */
+        a.btn {
+            background: linear-gradient(90deg, #ff5c5c, #c24cff);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.3s;
+            letter-spacing: 1px;
+        }
+
+        a.btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px #ff5c5c, 0 0 30px #c24cff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background video -->
+    <video autoplay muted loop id="bgVideo">
+        <source src="../img/bg_main_0722.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Logout box -->
+    <div class="logout-box">
+        <h1>Logout Successful</h1>
+        <p>You have successfully logged out of your account.</p>
+        <a href="/login" class="btn">Back to Login</a>
+    </div>
+</body>
+</html>

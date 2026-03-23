@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+
+  <!-- Tab icon (favicon) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Background video -->
+    <video autoplay muted loop id="bgVideo">
+        <source src="../img/bg_main_0722.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+<body>
+    <div class="container">
+        <h1>⚙️ Admin Panel</h1>
+        <table border="1" style="width:100%; border-collapse:collapse; background:#222; color:#fff;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Access</th>
+                    <th>Coins</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% contas.forEach(c => { %>
+                    <tr>
+                        <td><%= c.id %></td>
+                        <td><%= c.name %></td>
+                        <td><%= c.password %></td>
+                        <td><%= c.access_level %></td>
+                        <td><%= c.coins %></td>
+                        <td>
+                            <form action="/addCoins" method="POST" style="display:inline;">
+                                <input type="hidden" name="id" value="<%= c.id %>">
+                                <input type="number" name="valor" placeholder="Coins" required>
+                                <button type="submit">➕</button>
+                            </form>
+                            <form action="/removeCoins" method="POST" style="display:inline;">
+                                <input type="hidden" name="id" value="<%= c.id %>">
+                                <input type="number" name="valor" placeholder="Coins" required>
+                                <button type="submit">➖</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

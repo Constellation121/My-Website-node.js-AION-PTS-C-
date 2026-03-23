@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Store</title>
+
+  <!-- Favicon -->
+  <link id="dynamic-favicon" rel="icon" type="image/png" sizes="32x32" href="img/xxxxxxxxx.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/xxxxxxxxx.png">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- ===================== PREMIUM FUTURISTIC CSS ===================== -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: #e8f3f8;
+      background: #05070a;
+      overflow-x: hidden;
+    }
+
+    /* Background video */
+    .video-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .30;
+      z-index: -3;
+      filter: brightness(0.6) contrast(1.2);
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,170,255,0.9), transparent);
+      animation: float 12s linear infinite;
+      box-shadow: 0 0 6px rgba(0,140,255,0.7);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 0.9; }
+      100% { transform: translateY(-120vh) scale(0.45); opacity: 0.2; }
+    }
+
+    /* User box */
+    .container-user {
+      position: fixed;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      width: 330px;
+      padding: 35px;
+      border-radius: 28px;
+      text-align: center;
+
+      background: rgba(5, 10, 20, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(160,200,220,0.15);
+      box-shadow: 0 0 25px rgba(0,140,255,0.4), inset 0 0 12px rgba(255,255,255,0.05);
+
+      z-index: 10;
+      transition: 0.3s ease;
+    }
+
+    .container-user:hover {
+      box-shadow: 0 0 45px rgba(0,160,255,0.7), inset 0 0 20px rgba(255,255,255,0.08);
+    }
+
+    .container-user h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #b8d5e3;
+      text-shadow: 0 0 6px rgba(100,160,200,0.6);
+    }
+
+    .container-user p {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .coins {
+      color: #ffe46b;
+      font-size: 20px;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ffca28, 0 0 25px #ffd95b;
+    }
+
+    .container-user a {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #66caff;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .container-user a:hover {
+      color: #aee6ff;
+      text-shadow: 0 0 6px #66caff;
+    }
+
+    /* Center iframe */
+    .iframe-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 78%;
+      max-width: 1280px;
+      aspect-ratio: 16 / 9;
+
+      overflow: hidden;
+      border-radius: 26px;
+
+      background: rgba(5, 10, 20, 0.72);
+      border: 1px solid rgba(100,150,180,0.18);
+
+      box-shadow: 0 0 45px rgba(0,130,255,0.4),
+                  inset 0 0 20px rgba(255,255,255,0.06);
+
+      backdrop-filter: blur(10px);
+      transition: 0.4s ease;
+      z-index: 5;
+    }
+
+    .iframe-container:hover {
+      box-shadow: 0 0 65px rgba(0,160,255,0.7),
+                  inset 0 0 30px rgba(255,255,255,0.08);
+    }
+
+    .iframe-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .container-user {
+        position: static;
+        transform: none;
+        margin: 20px auto;
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .iframe-container {
+        width: 94%;
+        aspect-ratio: 4 / 3;
+        margin-top: 20px;
+      }
+
+      .particle {
+        width: 4px;
+        height: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container-user {
+        padding: 28px;
+      }
+
+      .container-user h1 {
+        font-size: 20px;
+      }
+
+      .coins {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Video -->
+  <video autoplay muted loop playsinline class="video-background">
+    <source src="../img/bg_main_0722.mp4" type="video/mp4">
+  </video>
+
+  <!-- Particles -->
+  <div class="particles"></div>
+
+  <!-- User box -->
+  <div class="container-user">
+    <h1><%= user.account %></h1>
+    <p><b>xxxxxxxxx Coins:</b> <span class="coins" id="coinsValue"><%= user.coins %></span></p>
+    <a href="/login">Log out</a>
+  </div>
+
+  <!-- Iframe -->
+  <div class="iframe-container">
+    <iframe src="http://26.112.59.47:3003/" allowfullscreen></iframe>
+  </div>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    /* Particles */
+    const particleContainer = document.querySelector('.particles');
+    const numParticles = 50;
+
+    for (let i = 0; i < numParticles; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.top = Math.random() * 100 + 'vh';
+      particle.style.animationDuration = 8 + Math.random() * 6 + 's';
+      particleContainer.appendChild(particle);
+    }
+
+    /* Automatic coins update */
+    async function atualizarCoins() {
+      try {
+        const response = await fetch("/coins");
+        if (!response.ok) return;
+        const data = await response.json();
+        if (data.coins !== undefined) {
+          document.getElementById("coinsValue").innerText = data.coins;
+        }
+      } catch (err) {
+        console.error("Error updating coins:", err);
+      }
+    }
+    setInterval(atualizarCoins, 5000);
+
+    /* Title animation */
+    const titleText = ["💎 xxxxxxxxx 💎", "🌌 xxxxxxxxx 🌌", "✨ xxxxxxxxx ✨"];
+    let i = 0;
+    setInterval(() => {
+      document.title = titleText[i % titleText.length];
+      i++;
+    }, 1500);
+
+    /* Animated favicon */
+    const favicon = document.getElementById("dynamic-favicon");
+    let glow = false;
+    setInterval(() => {
+      favicon.href = glow ? "img/xxxxxxxxx_glow.png" : "img/xxxxxxxxx.png";
+      glow = !glow;
+    }, 2000);
+  </script>
+
+</body>
+</html>
